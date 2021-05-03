@@ -23,7 +23,7 @@ public class PasswordPhilosophy {
     }
 
     public static void partOne() {
-        System.out.println("--------- Day 1: Part One ---------");
+        System.out.println("--------- Day 2: Part One ---------");
         int result = 0;
         for (String line : list) {
             String[] password = line.split(":");
@@ -40,7 +40,7 @@ public class PasswordPhilosophy {
     }
 
     public static void partTwo() {
-        System.out.println("--------- Day 1: Part Two ---------");
+        System.out.println("--------- Day 2: Part Two ---------");
         int result = 0;
         for (String line : list) {
             String[] password = line.split(":");
