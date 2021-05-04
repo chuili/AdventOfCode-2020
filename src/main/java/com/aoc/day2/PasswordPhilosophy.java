@@ -15,8 +15,7 @@ public class PasswordPhilosophy {
     static {
         try (Stream<String> stream = Files.lines(new File(
                 ReportRepair.class.getClassLoader().getResource("day-2.txt").getFile()).toPath())) {
-            list = stream
-                    .collect(Collectors.toList());
+            list = stream.collect(Collectors.toList());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -36,7 +35,7 @@ public class PasswordPhilosophy {
                 result++;
             }
         }
-        System.out.println("The puzzle answer is " + result);
+        System.out.println("The puzzle answer is " + result + "\n");
     }
 
     public static void partTwo() {
@@ -52,6 +51,6 @@ public class PasswordPhilosophy {
                 result++;
             }
         }
-        System.out.println("The puzzle answer is " + result);
+        System.out.println("The puzzle answer is " + result + "\n");
     }
 }
