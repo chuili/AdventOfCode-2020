@@ -1,7 +1,5 @@
 package com.aoc.day4;
 
-import com.aoc.day1.ReportRepair;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -18,7 +16,7 @@ public class PassportProcessing {
 
     static {
         try (Stream<String> stream = Files.lines(new File(
-                ReportRepair.class.getClassLoader().getResource("day-4.txt").getFile()).toPath())) {
+                PassportProcessing.class.getClassLoader().getResource("day-4.txt").getFile()).toPath())) {
             list = stream.collect(Collectors.toList());
         } catch (IOException e) {
             e.printStackTrace();
@@ -35,8 +33,9 @@ public class PassportProcessing {
                 Arrays.stream(data)
                         .map(a -> a.trim().split(":"))
                         .forEach(b -> {
-                            if (requiredFields.containsKey(b[0])) {
-                                requiredFields.put(b[0].trim(), 1);
+                            String key = b[0].trim();
+                            if (requiredFields.containsKey(key)) {
+                                requiredFields.put(key, 1);
                             }
                         });
                 continue;
@@ -52,6 +51,7 @@ public class PassportProcessing {
     public static void partTwo() {
         System.out.println("--------- Day 4: Part Two ---------");
         int result = 0;
+        Map<String, String> regex = constructRegexMap();
         reset();
         for (String line : list) {
             if (line.trim().length() > 0) {
@@ -61,62 +61,8 @@ public class PassportProcessing {
                         .forEach(b -> {
                             String key = b[0].trim();
                             String value = b[1].trim();
-                            switch (key) {
-                                case "byr": {
-                                    // 1920-2002
-                                    int byr = Integer.parseInt(value);
-                                    if (byr >= 1920 && byr <= 2002) {
-                                        requiredFields.put(key, 1);
-                                    }
-                                    break;
-                                }
-                                case "iyr": {
-                                    // 2010-2020
-                                    int iyr = Integer.parseInt(value);
-                                    if (iyr >= 2010 && iyr <= 2020) {
-                                        requiredFields.put(key, 1);
-                                    }
-                                    break;
-                                }
-                                case "eyr": {
-                                    // 2020-2030
-                                    int eyr = Integer.parseInt(value);
-                                    if (eyr >= 2020 && eyr <= 2030) {
-                                        requiredFields.put(key, 1);
-                                    }
-                                    break;
-                                }
-                                case "hgt": {
-                                    // 150-193cm; 59-76in
-                                    if (value.matches("^(1[5-8][0-9]|19[0-3])cm$|^(59|6[0-9]|7[0-6])in$")) {
-                                        requiredFields.put(key, 1);
-                                    }
-                                    break;
-                                }
-                                case "hcl": {
-                                    // #{6 characters 0-9 or a-f
-                                    if (value.matches("^#[0-9a-f]{6}$")) {
-                                        requiredFields.put(key, 1);
-                                    }
-                                    break;
-                                }
-                                case "ecl": {
-                                    // amb|blu|brn|gry|grn|hzl|oth
-                                    String[] eyeColor = {"amb", "blu", "brn", "gry", "grn", "hzl", "oth"};
-                                    if (Arrays.stream(eyeColor).anyMatch(a -> a.equals(value))) {
-                                        requiredFields.put(key, 1);
-                                    }
-                                    break;
-                                }
-                                case "pid": {
-                                    // 9 digits number, including leading 0
-                                    if (value.matches("^[0-9]{9}$")) {
-                                        requiredFields.put(key, 1);
-                                    }
-                                    break;
-                                }
-                                default:
-                                    break;
+                            if (regex.containsKey(key) && value.matches(regex.get(key))) {
+                                requiredFields.put(key, 1);
                             }
                         });
                 continue;
@@ -137,5 +83,17 @@ public class PassportProcessing {
         requiredFields.put("hcl", 0);
         requiredFields.put("ecl", 0);
         requiredFields.put("pid", 0);
+    }
+
+    private static Map<String, String> constructRegexMap() {
+        Map<String, String> regex = new HashMap<>();
+        regex.put("byr", "^(19[2-9][0-9]|200[0-2])$"); // 1920-2002
+        regex.put("iyr", "^(201[0-9]|2020)$"); // 2010-2020
+        regex.put("eyr", "^(202[0-9]|2030)$"); // 2020-2030
+        regex.put("hgt", "^(1[5-8][0-9]|19[0-3])cm$|^(59|6[0-9]|7[0-6])in$"); // 150-193cm; 59-76in
+        regex.put("hcl", "^#[0-9a-f]{6}$"); // #{6 characters 0-9 or a-f
+        regex.put("ecl", "^(amb|blu|brn|gry|grn|hzl|oth)$"); // amb|blu|brn|gry|grn|hzl|oth
+        regex.put("pid", "^[0-9]{9}$"); // 9 digits number, including leading 0
+        return  regex;
     }
 }

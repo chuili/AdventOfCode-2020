@@ -1,7 +1,5 @@
 package com.aoc.day3;
 
-import com.aoc.day1.ReportRepair;
-
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -15,7 +13,7 @@ public class TobogganTrajectory {
 
     static {
         try (Stream<String> stream = Files.lines(new File(
-                ReportRepair.class.getClassLoader().getResource("day-3.txt").getFile()).toPath())) {
+                TobogganTrajectory.class.getClassLoader().getResource("day-3.txt").getFile()).toPath())) {
             list = stream.collect(Collectors.toList());
         } catch (IOException e) {
             e.printStackTrace();
