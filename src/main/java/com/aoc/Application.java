@@ -23,5 +23,9 @@ public class Application {
         // Day 4
         PassportProcessing.partOne();
         PassportProcessing.partTwo();
+
+        // Day 5
+        BinaryBoarding.partOne();
+        BinaryBoarding.partTwo();
     }
 }
