@@ -4,6 +4,8 @@ import com.aoc.day1.ReportRepair;
 import com.aoc.day2.PasswordPhilosophy;
 import com.aoc.day3.TobogganTrajectory;
 import com.aoc.day4.PassportProcessing;
+import com.aoc.day5.BinaryBoarding;
+import com.aoc.day6.CustomCustoms;
 
 public class Application {
 
@@ -27,5 +29,9 @@ public class Application {
         // Day 5
         BinaryBoarding.partOne();
         BinaryBoarding.partTwo();
+
+        // Day 6
+        CustomCustoms.partOne();
+        CustomCustoms.partTwo();
     }
 }
