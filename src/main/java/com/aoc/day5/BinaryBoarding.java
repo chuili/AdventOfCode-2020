@@ -50,10 +50,9 @@ public class BinaryBoarding {
 
             int seatId = minRow * 8 + minColumn;
             seatList.add(seatId);
-            result = (seatId > result) ? seatId : result;
             reset();
         }
-
+        result = seatList.stream().max(Integer::compare).get();
         System.out.println("The puzzle answer is " + result +"\n");
     }
 
