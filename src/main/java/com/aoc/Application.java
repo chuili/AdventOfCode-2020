@@ -6,6 +6,7 @@ import com.aoc.day3.TobogganTrajectory;
 import com.aoc.day4.PassportProcessing;
 import com.aoc.day5.BinaryBoarding;
 import com.aoc.day6.CustomCustoms;
+import com.aoc.day7.HandyHaversacks;
 
 public class Application {
 
@@ -33,5 +34,9 @@ public class Application {
         // Day 6
         CustomCustoms.partOne();
         CustomCustoms.partTwo();
+
+        // Day 7
+        HandyHaversacks.partOne();
+        HandyHaversacks.partTwo();
     }
 }
