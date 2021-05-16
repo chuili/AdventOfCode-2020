@@ -34,7 +34,7 @@ public class HandheldHalting {
     }
 
     public static void partTwo() {
-        System.out.println("--------- Day 8: Part One ---------");
+        System.out.println("--------- Day 8: Part Two ---------");
         Result result;
         for (int i = 0; i < list.size(); i++) {
             List<String> modified = list.stream().collect(Collectors.toList());
