@@ -7,6 +7,7 @@ import com.aoc.day4.PassportProcessing;
 import com.aoc.day5.BinaryBoarding;
 import com.aoc.day6.CustomCustoms;
 import com.aoc.day7.HandyHaversacks;
+import com.aoc.day8.HandheldHalting;
 
 public class Application {
 
@@ -38,5 +39,9 @@ public class Application {
         // Day 7
         HandyHaversacks.partOne();
         HandyHaversacks.partTwo();
+
+        // Day 8
+        HandheldHalting.partOne();
+        HandheldHalting.partTwo();
     }
 }
