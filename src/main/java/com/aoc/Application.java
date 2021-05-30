@@ -8,6 +8,7 @@ import com.aoc.day5.BinaryBoarding;
 import com.aoc.day6.CustomCustoms;
 import com.aoc.day7.HandyHaversacks;
 import com.aoc.day8.HandheldHalting;
+import com.aoc.day9.EncodingError;
 
 public class Application {
 
@@ -43,5 +44,9 @@ public class Application {
         // Day 8
         HandheldHalting.partOne();
         HandheldHalting.partTwo();
+
+        // Day 9
+        EncodingError.partOne();
+        EncodingError.partTwo();
     }
 }
