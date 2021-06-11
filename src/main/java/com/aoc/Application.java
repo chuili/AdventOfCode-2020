@@ -1,6 +1,7 @@
 package com.aoc;
 
 import com.aoc.day1.ReportRepair;
+import com.aoc.day10.AdapterArray;
 import com.aoc.day2.PasswordPhilosophy;
 import com.aoc.day3.TobogganTrajectory;
 import com.aoc.day4.PassportProcessing;
@@ -48,5 +49,9 @@ public class Application {
         // Day 9
         EncodingError.partOne();
         EncodingError.partTwo();
+
+        // Day 10
+        AdapterArray.partOne();
+        AdapterArray.partTwo();
     }
 }
